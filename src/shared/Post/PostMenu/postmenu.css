@@ -1,0 +1,20 @@
+.menu {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    height: 16px;
+    margin-bottom: 15px;
+}
+
+.menu_item {
+    line-height: 14px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin-right: 27px;
+    cursor: pointer;
+}
+
+.menu_item > div + span {
+    margin-left: 5px;
+}

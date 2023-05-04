@@ -1,0 +1,26 @@
+.modal {
+    position: fixed;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    overflow-x: hidden;
+    width: 70%;
+    height: 90%;
+    max-width: 960px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.15);
+    border-radius: 7px;
+    padding: 53px 60px;
+}
+
+.content {
+    padding-bottom: 37px;
+}
+
+@media all and (min-width: 1024px) {
+
+    .modal {
+        width: 90%;
+    }
+}

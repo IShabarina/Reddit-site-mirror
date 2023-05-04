@@ -1,0 +1,79 @@
+.commentItem {
+    padding: 15px 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+}
+
+.leftBar {
+    width: 19px;
+    height: 100%;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.leftBar button {
+    height: 10px;
+    width: 19px;
+}
+
+.up {
+    margin-bottom: 10px;
+}
+.down  {
+    margin-bottom: 20px;
+}
+
+.leftBar span {
+    width: 3px;
+    height: 40px;
+    max-height: 100%;
+    border: solid 1px #D9D9D9;
+    background-color:  #D9D9D9;
+}
+.title {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    height: 22px;
+}
+
+.userLink {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+}
+
+.avatar {
+    border-radius: 20px;
+    width: 20px;
+    height: 20px;
+    margin: 0 7px 0 0;
+}
+
+.username {
+    color: #CC6633;
+    text-align: center;
+    margin-right: 5px;
+}
+
+.createdAt {
+    color: #999999;
+    margin-right: 4px;
+}
+
+.userGroup {
+    color: #333333;
+    background: #D9D9D9;
+    padding: 3px 11px;
+}
+
+.text {
+    margin: 9px 0 13px;
+}

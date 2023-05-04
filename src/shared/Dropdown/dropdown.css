@@ -1,0 +1,13 @@
+.listConteiner {
+    position: absolute;
+    /* right: 4px;
+    top: 41px; */
+    z-index: 1;
+    max-width: 140px;
+}
+
+@media all and (min-width: 1024px) {
+    .listConteiner {
+        max-width: 157px;
+    }
+}

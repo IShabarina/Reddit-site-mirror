@@ -1,0 +1,120 @@
+.menu {
+    position: absolute;
+    top: 17px;
+    right: 15px;
+}
+
+.menuButton {
+    width: 31px;
+    height: 31px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(90deg);
+    border-radius: 31px;
+    background: transparent;
+    border: 0;
+}
+
+.menuButton:active, .menuButton:hover {
+    background-color: rgba(51, 51, 51, 0.1);
+}
+
+.menuDropList {
+    width: 140px;
+    padding: 0 12px;
+    background: #FFFFFF;
+    border-radius: 3px 3px 0 0;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+}
+
+.menu_drop_item {
+    padding: 10px 0 12px;
+    line-height: 14px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.menu_drop_item > div + span {
+    margin-left: 5px;
+}
+
+.closeBtn {
+    background: #D9D9D9;
+    color: #666666;
+    border-radius: 0 0 3px 3px;
+    padding: 10px 0 12px;
+    line-height: 14px;
+    width: 100%;
+}
+
+.closeBtn > p {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: #666666;
+}
+
+.menu_drop_item:not(:last-child) {
+    border-bottom: 1px solid #ECECEC;
+}
+
+.menu_drop_item:nth-child(1),
+.menu_drop_item:nth-child(2),
+.menu_drop_item:nth-child(4) {
+    display: none;
+}
+
+.menu_drop_item a {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #999999;
+}
+
+@media all and (min-width: 1024px) {
+    .menu {
+        position: relative;
+        flex: 0 0;
+        top: unset;
+        right: unset;
+        margin: 0 0 0 auto;
+    }
+
+    .menuDropList {
+        width: 157px;
+        right: -63px;
+        top: 50px;
+    }
+
+    .menu_drop_item:nth-child(1),
+    .menu_drop_item:nth-child(2),
+    .menu_drop_item:nth-child(4) {
+        display: flex;
+    }
+
+    .menu_drop_item {
+        padding: 10px 0 12px;
+}
+
+    .menuButton {
+        align-items: center;
+        transform: unset;
+    }
+
+    .menu_drop_item a {
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    .closeBtn > p {
+        font-size: 14px;
+        line-height: 16px;
+    }
+}

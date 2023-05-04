@@ -1,0 +1,7 @@
+
+
+@media all and (min-width: 1024px) {
+    .actions {
+        display: none;
+    }
+}

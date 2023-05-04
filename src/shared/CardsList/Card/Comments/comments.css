@@ -1,0 +1,21 @@
+.commentsButton * {
+    color: #C4C4C4;
+}
+
+.commentsButtonIcon {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.commentsNumber {
+    display: inline-block;
+    padding: 0 0 0 6px;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+@media all and (min-width: 1024px) {
+    .commentsButton {
+        display: none;
+    }
+}

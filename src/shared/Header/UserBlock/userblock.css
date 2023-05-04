@@ -1,0 +1,63 @@
+.userBox {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    cursor: pointer;
+}
+
+.userBox:hover .avatarBox {
+    box-shadow: 0 0 0 1px #CC6633;
+}
+
+.avatarBox {
+    width: 60px;
+    height: 60px;
+    padding: 5px;
+    border-radius: 100%;
+    box-shadow: none;
+}
+
+.avatarImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.username {
+    display: none;
+}
+
+.username_text:hover {
+    color: #CC6633;
+}
+
+@media all and (min-width: 1024px) {
+    .username {
+        display: flex;
+    }
+
+    .userBox {
+        display: flex;
+    }
+
+    .avatarBox {
+        margin-right: 13px;
+    }
+
+    .username_text {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 23px;
+        color: #CC6633;
+    }
+}
+
+
+@media all and (min-width: 1540px) {
+    .username_text {
+        color: #333333;
+    }
+}

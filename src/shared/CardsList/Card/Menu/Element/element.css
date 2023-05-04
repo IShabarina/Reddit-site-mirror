@@ -1,0 +1,16 @@
+.element_text {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #999999;
+}
+
+@media all and (min-width: 1024px) {
+    .element_text {
+        font-size: 14px;
+        line-height: 16px;   
+    }
+}
+

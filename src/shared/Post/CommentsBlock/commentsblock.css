@@ -1,0 +1,35 @@
+.container {
+    padding-top: 35px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.sortBlock {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 13px;
+}
+
+.sortBlock span {
+    color: #999999;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    margin-right: 5px;
+}
+
+.sortBlock button {
+    color: #CC6633;
+    background-color: transparent;
+    border: none;
+    
+}
+
+.commentsList {
+    display: flex;
+    flex-direction: column;
+}
+
