@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef} from 'react';
 import styles from './post.css';
 import ReactDOM from 'react-dom';
-import { CommentForm } from './CommentForm';
 import { CommentsBlock } from './CommentsBlock';
-import { postIdContext } from '../context/postIdContext';
+import { CommentFormContainer } from './CommentFormContainer';
 
 interface IPost {
   id: string;
@@ -35,7 +34,7 @@ export function Post(props: IPost) {
       <div className={styles.content}>
         <p>Content</p>
       </div>
-      <CommentForm />
+      <CommentFormContainer />
       <CommentsBlock />
     </div>
   ), node);
