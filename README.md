@@ -12,5 +12,6 @@ Here are implemented:
 - public API Reddit;
 - React hooks (useEffect, useState, useRef..);
 - Customs hooks;
-- Passing Data with Context, rendering components with Portal
+- Passing Data with Context, rendering components with Portal;
+- customs hooks and context => Redux, react-redux, redux-thunk;
 ...
