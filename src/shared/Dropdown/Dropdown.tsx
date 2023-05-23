@@ -22,6 +22,7 @@ export function Dropdown({ button, children, isOpen, onClose = NOOP, onOpen = NO
 
   React.useEffect(() => setIsDropdownOpen(isOpen), [isOpen]); // hook to listen changes of properties
   React.useEffect(() => isDropdownOpen ? onOpen() : onClose(), [isDropdownOpen]); // activate callbacks
+  
   React.useEffect(() => { // hook to listen window's resize and update button's coordinates
     function changeCoords() {
       if (refBtn) {

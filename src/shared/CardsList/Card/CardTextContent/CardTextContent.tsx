@@ -1,31 +1,26 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './cardtextcontent.css';
 import { Post } from '../../../Post';
-import { postIdContext } from '../../../context/postIdContext';
+import { changeDataFormat } from '../../../../utils/react/chargeDataFormat';
+import { commentsDataRequestAsync } from '../../../redux/commentsData/actions';
+import { useDispatch } from 'react-redux';
 
 interface ICardTextContent {
-  id: string;
   author: string;
   avatarImg: string;
   title: string;
   datePost: number;
+  postId: string;
+  onClick: () => void;
 }
 
 export function CardTextContent(postDetails: ICardTextContent) {
   //state for modal Post opens:
   const [isModalOpened, setIsModalOpened] = useState(false);
-  //!!! state for Post's ID :
-  const { value, onChange } = useContext(postIdContext);
+  const dispatch = useDispatch<any>();
 
   //src for default avatar:
   const defaultAvatarImg = "https://cdn.dribbble.com/users/759083/screenshots/17196153/media/a437d241c694189e6738c54dcdf9cfd6.jpg";
-
-  //get data of post in format DD Mon YYYY:
-  const publishedDate = (dateMS: number) => {
-    let dateOfPost = new Date(dateMS * 1000);
-    var months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря',];
-    return (`${dateOfPost.getDate()} ${months[dateOfPost.getMonth()]} ${dateOfPost.getFullYear()}`);
-  }
 
   return (
     <div className={styles.textContent}>
@@ -43,7 +38,7 @@ export function CardTextContent(postDetails: ICardTextContent) {
 
         <span className={styles.createdAt}>
           <span className={styles.publishedLabel}>опубликовано </span>
-          {publishedDate(postDetails.datePost)}
+          {changeDataFormat(postDetails.datePost)}
         </span>
       </div>
 
@@ -52,16 +47,14 @@ export function CardTextContent(postDetails: ICardTextContent) {
           className={styles.postLink}
           onClick={() => {
             setIsModalOpened(true);
-            //!!!=> save Post Id to postIdContext:
-            onChange(postDetails.id);
+            dispatch(commentsDataRequestAsync(postDetails.postId))
           }}>
           {postDetails.title}
         </a>
 
-        {/* render modal by click on Title: */}
-        {isModalOpened && (
+        {isModalOpened && ( //render modal by click on Title:
           <Post
-            id={value}
+            id={postDetails.postId}
             onClose={() => { setIsModalOpened(false); }} />
         )}
       </h2>

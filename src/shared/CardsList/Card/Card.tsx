@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './card.css';
 import { CardControls } from './CardControls';
 import { CardPreview } from './CardPreview';
@@ -9,28 +9,28 @@ import { Actions } from './Actions';
 import { Menu } from './Menu';
 import { ShareBtn } from './ShareBtn';
 import { SaveBtn } from './SaveBtn';
+import { IPostData } from '../../redux/postsData/actions';
 
-interface IPostData {
-  id: string;
-  author: string;
-  avatarImg: string;
-  title: string;
-  datePost: number;
-  prevImg: string;
-  rating: number;
-  commentsNmb: number;
-}
 
 export function Card(postDetails: IPostData) {
+  const [postId, setPostId] = useState('');
+
+  function handlerPostClick() {
+    setPostId(postDetails.id);
+  }
 
   return (
     <li key={postDetails.id} className={styles.card}>
       <CardTextContent
-        id={postDetails.id}
         author={postDetails.author}
         avatarImg={postDetails.avatarImg}
         title={postDetails.title}
-        datePost={postDetails.datePost} />
+        datePost={postDetails.datePost}
+        onClick={() => {
+          handlerPostClick();
+        }}
+        postId={postId}
+      />
 
       <CardPreview src={postDetails.prevImg} />
 

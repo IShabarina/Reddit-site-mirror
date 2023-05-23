@@ -1,7 +1,6 @@
 import React, { MouseEventHandler, useState } from 'react';
 import styles from './postmenu.css';
 import { GenericList } from '../../../GenericList';
-import { CommentForm } from '../CommentForm';
 import { generateId } from '../../../utils/react/generateRandomIndex';
 import { EIconsComponent } from '../../Icon';
 import { Element } from '../../CardsList/Card/Menu/Element';
@@ -26,7 +25,6 @@ export function PostMenu(props: IPostMenuProp) {
   }
 
   function handleReplyClick() {
-    console.log('clicked Ответить');
     setCommentFormIsOppened(!commentFormIsOppened);
   }
 
@@ -35,7 +33,9 @@ export function PostMenu(props: IPostMenuProp) {
       <ul className={styles.menu} onClick={handleMenuClick}>
         <GenericList list={menuList} />
       </ul>
-      {commentFormIsOppened && <CommentFormUncontrol name={props.userName} />}
+      {commentFormIsOppened &&
+        <CommentFormUncontrol name={props.userName} />
+      }
     </>
   );
 }

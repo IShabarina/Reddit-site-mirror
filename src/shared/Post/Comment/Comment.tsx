@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './comment.css';
 import { EIconsComponent, Icon } from '../../Icon';
-import { IPostContext } from '../../context/commentsListContext';
 import { PostMenu } from '../PostMenu';
 
 interface IComment {
@@ -42,9 +41,9 @@ export function Comment(props: IComment) {
         
         <PostMenu userName={props.userName}/>
         
-        {(props.replies && props.replies !== "") && props.replies.map((item: IPostContext) =>
+        {(props.replies && props.replies !== "") && props.replies.map((item: IComment) =>
           <Comment
-            key={item.id}
+            key={item.key}
             userName={item.userName}
             dated={item.dated}
             text={item.text}
