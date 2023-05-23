@@ -5,7 +5,7 @@ import { Header } from './shared/Header';
 import { Layout } from './shared/Layout';
 import { Content } from './shared/Content';
 import { CardsList } from "./shared/CardsList";
-import { legacy_createStore as createStore, applyMiddleware} from 'redux';
+import { legacy_createStore as createStore, applyMiddleware } from 'redux';
 import { Provider, useDispatch } from 'react-redux';
 import { composeWithDevTools } from "@redux-devtools/extension";
 import rootReducer from "./shared/redux/rootReducer";
@@ -19,8 +19,8 @@ const store = createStore(rootReducer, composeWithDevTools(
 
 function AppComponent() {
     const dispatch = useDispatch<any>();
-    console.log(store.getState().token);
-     useEffect(() => {
+
+    useEffect(() => {
         dispatch(saveToken());
     }, []);
 
