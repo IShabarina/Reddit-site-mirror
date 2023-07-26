@@ -3,3 +3,27 @@
         padding: 40px 40px;
     }
 }
+
+.button {
+    display: block;
+    margin: 5px auto;
+    padding: 14px 20px;
+    width: 180px;
+    height: 40px;
+    background: #CC6633;
+    color: #FFFFFF;
+    font-weight: 500;
+    border-radius: 3px;
+}
+
+.button:hover, 
+.button:focus,
+.button:active,
+.button:focus-visible,
+.button:target {
+    background-color: #cf6e3d;
+    outline: none;
+    transform: scale(1.05);
+    transition: transform 0.03 ease-in-out;
+}
+

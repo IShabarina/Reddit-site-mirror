@@ -12,8 +12,9 @@ export const postsData: Reducer<PostsDataState, PostsDataRequests> = (state = in
         case POSTS_DATA_REQUEST_SUCCESS:
             return {
                 ...state,
-                data: action.postsData,
+                data: state.data.concat(action.postsData),
                 loading: false,
+                after: action.after,
             }
         case POSTS_DATA_REQUEST_ERROR:
             return {

@@ -25,7 +25,8 @@ export const initialState: RootState = {
     postsData: {
         loading: false,
         error: '',
-        data: []
+        data: [],
+        after: '',
     },
     commentText: '',
 }
@@ -40,7 +41,8 @@ export type UserDataState = {
 export type PostsDataState = {
     loading: boolean,
     error: string,
-    data: Array<IPostData>
+    data: Array<IPostData>,
+    after: string,
 }
 export type CommentsDataState = {
     loading: boolean,

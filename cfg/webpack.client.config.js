@@ -56,6 +56,11 @@ module.exports = {
         // чтобы в css модули превращались все кроме: 
         exclude: GLOBAL_CSS_REGEXP
       },
+      {
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: "javascript/auto",
+      },
       // 4.4.3 добавляем настройки для обычных css файлов:
       {
         test: GLOBAL_CSS_REGEXP,

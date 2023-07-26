@@ -21,6 +21,7 @@
     "nodemon": "^2.0.12",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-hook-form": "^7.44.1",
     "redux-thunk": "^2.4.2",
     "webpack-node-externals": "^3.0.0"
   },
