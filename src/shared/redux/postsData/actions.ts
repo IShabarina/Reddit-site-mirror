@@ -77,12 +77,13 @@ export function postsDataRequestAsync(): ThunkAction<void, RootState, unknown, A
                         commentsNmb: item.data.num_comments,
                     })
                 );
-                console.log("newData", res.data.data);
-                console.log("newafter", after);
-                dispatch(postsDataSuccessRequest([...getState().postsData.data, ...postsData], after));
+
+                dispatch(postsDataSuccessRequest(postsData, after));
+                // dispatch(postsDataSuccessRequest([...getState().postsData.data, ...postsData], after));
             })
             .catch((error) => {
                 dispatch(postsDataErrorRequest(error));
+                console.log('Error message', error.message);
             })
     }
 }

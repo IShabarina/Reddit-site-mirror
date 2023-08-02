@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './card.css';
 import { CardControls } from './CardControls';
 import { CardPreview } from './CardPreview';
@@ -13,23 +13,15 @@ import { IPostData } from '../../redux/postsData/actions';
 
 
 export function Card(postDetails: IPostData) {
-  const [postId, setPostId] = useState('');
-
-  function handlerPostClick() {
-    setPostId(postDetails.id);
-  }
-
-  return (
+ 
+    return (
     <li key={postDetails.id} className={styles.card}>
       <CardTextContent
         author={postDetails.author}
         avatarImg={postDetails.avatarImg}
         title={postDetails.title}
         datePost={postDetails.datePost}
-        onClick={() => {
-          handlerPostClick();
-        }}
-        postId={postId}
+        postId={postDetails.id}
       />
 
       <CardPreview src={postDetails.prevImg} />

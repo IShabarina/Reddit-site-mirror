@@ -18,6 +18,11 @@
     padding-bottom: 37px;
 }
 
+.image {
+    width: 100%;
+    border-radius: 5px;
+}
+
 @media all and (min-width: 1024px) {
 
     .modal {

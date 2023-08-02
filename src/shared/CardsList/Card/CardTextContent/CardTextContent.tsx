@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './cardtextcontent.css';
 import { Post } from '../../../Post';
 import { changeDataFormat } from '../../../../utils/react/chargeDataFormat';
-import { commentsDataRequestAsync } from '../../../redux/commentsData/actions';
-import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 interface ICardTextContent {
   author: string;
@@ -11,15 +10,10 @@ interface ICardTextContent {
   title: string;
   datePost: number;
   postId: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export function CardTextContent(postDetails: ICardTextContent) {
-  //state for modal Post opens:
-  const [isModalOpened, setIsModalOpened] = useState(false);
-  const dispatch = useDispatch<any>();
-
-  //src for default avatar:
   const defaultAvatarImg = "https://cdn.dribbble.com/users/759083/screenshots/17196153/media/a437d241c694189e6738c54dcdf9cfd6.jpg";
 
   return (
@@ -43,20 +37,12 @@ export function CardTextContent(postDetails: ICardTextContent) {
       </div>
 
       <h2 className={styles.title}>
-        <a href="#post-url"
+        <Link
+          to={`${postDetails.postId}`}
           className={styles.postLink}
-          onClick={() => {
-            setIsModalOpened(true);
-            dispatch(commentsDataRequestAsync(postDetails.postId))
-          }}>
+        >
           {postDetails.title}
-        </a>
-
-        {isModalOpened && ( //render modal by click on Title:
-          <Post
-            id={postDetails.postId}
-            onClose={() => { setIsModalOpened(false); }} />
-        )}
+        </Link>
       </h2>
     </div>
   );

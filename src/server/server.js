@@ -8,10 +8,6 @@ const app = express();
 
 app.use("/static", express.static("./dist/client"));
 
-app.get("/", (req, res) => {
-  res.send(indexTemplate(ReactDOM.renderToString(App())));
-});
-
 app.get('/auth', (req, res) => {
    // send POST request acording to https://github.com/reddit-archive/reddit/wiki/OAuth2:
   axios.post(
@@ -30,6 +26,11 @@ app.get('/auth', (req, res) => {
       console.log(data['access_token']); 
     })
     .catch(console.log)
+});
+
+
+app.get("*", (req, res) => {
+  res.send(indexTemplate(ReactDOM.renderToString(App())));
 });
 
 app.listen(3000, () => {

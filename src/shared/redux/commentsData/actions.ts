@@ -1,7 +1,7 @@
 
 import axios from "axios";
 import { ActionCreator, AnyAction } from "redux";
-import { ThunkAction} from "redux-thunk";
+import { ThunkAction } from "redux-thunk";
 import { RootState } from "../initialState";
 
 
@@ -48,14 +48,14 @@ function mapComments(redditDataArray: Array<any>): Array<ICommentsData> {
 }
 
 //thunk fn
-export function commentsDataRequestAsync(id:string): ThunkAction<void, RootState, unknown, AnyAction> {
-     return (dispatch, getState) => {
+export function commentsDataRequestAsync(id: string): ThunkAction<void, RootState, unknown, AnyAction> {
+    return (dispatch, getState) => {
         dispatch(commentsDataRequest());
         axios.get(`https://oauth.reddit.com/comments/${id}`, {
             headers: { Authorization: `bearer ${getState().token}` }
         })
             .then((res) => {
-                const comments: Array<ICommentsData> = mapComments(res.data.data.children);
+                const comments: Array<ICommentsData> = mapComments(res.data[1].data.children);
                 dispatch(commentsDataSuccessRequest(comments));
             })
             .catch(e => {

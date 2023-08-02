@@ -8,7 +8,7 @@ import { ICommentsData } from '../../redux/commentsData/actions';
 export function CommentsBlock() {
   const commentsDataList = useSelector<RootState, Array<ICommentsData>>(state => state.commentsData.data);
   const loading = useSelector<RootState, boolean>(state => state.commentsData.loading);
-
+ 
   return (
     <div className={styles.container}>
       <div className={styles.sortBlock}>

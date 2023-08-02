@@ -4,6 +4,8 @@ import styles from './cardslist.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../redux/initialState';
 import { IPostData, postsDataRequestAsync } from '../redux/postsData/actions';
+import { Outlet, Route, Routes } from 'react-router-dom';
+import { Post } from '../Post';
 
 
 export function CardsList() {
@@ -15,31 +17,31 @@ export function CardsList() {
 
   const bottomOfList = useRef<HTMLDivElement>(null); //link on div element at the and of list
   const [loadMorePosts, setloadMorePosts] = useState(true);
-
-  // useEffect(() => {
-  //   if (!token || token === undefined) return;
-  //   // dispatch(postsDataRequestAsync());
-  // }, [token])
+  const [autoLoadCount, setAutoLoadCount] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
   function handleBtnClick() {
     setloadMorePosts(true);
   }
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
     if (!token || token === undefined) return;
-    
-    //удалить (временно тест):
-    if (postsList.length >= 6) {
+    //once posts loaded twice - loading stopped:
+    if (autoLoadCount === 2) {
       setloadMorePosts(false);
+      setAutoLoadCount(0);
     };
     if (!loadMorePosts) return;
 
     //add observer:
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        console.log('posts From Redux', postsList);
-        console.log('after from Redux', nextAfter);
         dispatch(postsDataRequestAsync());
+        setAutoLoadCount(prevCount => prevCount + 1);
       }
     }, {
       rootMargin: '10px',
@@ -60,7 +62,7 @@ export function CardsList() {
       < ul className={styles.cardsList} >
 
         {
-          postsList.map((post) => (
+          mounted && postsList.map((post) => (
             <Card
               key={post.id}
               id={post.id}
@@ -76,8 +78,10 @@ export function CardsList() {
         }
         <div ref={bottomOfList} />
       </ul >
+      
+      <Outlet />
       {loading && (<div style={{ padding: '40px', textAlign: 'center' }}> Loading...</div>)}
-      <button className={styles.button} onClick={handleBtnClick}>Загрузить еще</button>
+      {!loadMorePosts && <button className={styles.button} onClick={handleBtnClick}>Load more</button>}
     </>
 
   );

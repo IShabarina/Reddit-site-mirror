@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import './main.global.css';
 import { hot } from 'react-hot-loader/root';
 import { Header } from './shared/Header';
@@ -11,6 +11,9 @@ import { composeWithDevTools } from "@redux-devtools/extension";
 import rootReducer from "./shared/redux/rootReducer";
 import thunk from "redux-thunk";
 import { saveToken } from "./shared/redux/setToken/actions";
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { Post } from "./shared/Post";
+import { NotFoundPage } from "./shared/NotFoundPage/NotFoundPage";
 
 //var of object store with getState, dispatch methods:
 const store = createStore(rootReducer, composeWithDevTools(
@@ -20,17 +23,35 @@ const store = createStore(rootReducer, composeWithDevTools(
 function AppComponent() {
     const dispatch = useDispatch<any>();
 
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
     useEffect(() => {
         dispatch(saveToken());
     }, []);
 
     return (
-        <Layout>
-            <Header />
-            <Content>
-                <CardsList />
-            </Content>
-        </Layout>
+        <>
+            {mounted && (
+                <BrowserRouter>
+                    <Layout>
+                        <Header />
+                        <Content>
+                            <Routes >
+                                <Route path="/auth" element={<Navigate to="/posts" />} />
+                                <Route path="/" element={<Navigate to="/posts" />} />
+                                <Route path="/posts/*" element={<CardsList />}>
+                                    <Route path=":id" element={<Post />} />
+                                </Route>
+                                <Route path="*" element={<NotFoundPage />} />
+                            </Routes>
+                        </Content>
+                    </Layout>
+                </BrowserRouter>
+            )}
+        </>
     );
 }
 
