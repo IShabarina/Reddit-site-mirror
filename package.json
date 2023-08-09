@@ -1,8 +1,10 @@
 {
-  "homepage": "http://PikchaGameDev.github.io/react-deploy",
   "name": "reactapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a training app for React course",
+  "engines": {
+    "node": "14.x"
+  },
   "main": "webpack.config.js",
   "scripts": {
     "predeploy": "npm run build:dev",
@@ -10,7 +12,8 @@
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
     "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
     "dev": "cross-env NODE_ENV=development CLIENT_ID=CYZM5_FaTRn214QMXb0URg node ./bin/dev.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./dist/server/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -24,7 +27,8 @@
     "react-hook-form": "^7.44.1",
     "react-router-dom": "^6.14.2",
     "redux-thunk": "^2.4.2",
-    "webpack-node-externals": "^3.0.0"
+    "webpack-node-externals": "^3.0.0",
+    "zustand": "^4.4.1"
   },
   "devDependencies": {
     "@hot-loader/react-dom": "^17.0.1",

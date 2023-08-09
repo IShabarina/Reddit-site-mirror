@@ -4,6 +4,8 @@ import { App } from "../App";
 import { indexTemplate } from "./indexTemplate";
 import axios from "axios";
 
+// read PORD from env:
+const PORT = process.env.PORT || 3000; 
 const app = express();
 
 app.use("/static", express.static("./dist/client"));
@@ -33,6 +35,6 @@ app.get("*", (req, res) => {
   res.send(indexTemplate(ReactDOM.renderToString(App())));
 });
 
-app.listen(3000, () => {
-  console.log("server started on port http://localhost:3000");
+app.listen(PORT, () => {
+  console.log(`server started on port http://localhost:${PORT}`);
 });

@@ -49,6 +49,7 @@ export const postsDataErrorRequest: ActionCreator<PostsDataErrorRequest> = (erro
 export function postsDataRequestAsync(): ThunkAction<void, RootState, unknown, AnyAction> {
     return (dispatch, getState) => {
         dispatch(postsDataRequest());
+        
         if (!getState().token || getState().token === "undefined" || getState().token === '') return;
         axios.get('https://oauth.reddit.com/best.json?sr_detail=true',
             {

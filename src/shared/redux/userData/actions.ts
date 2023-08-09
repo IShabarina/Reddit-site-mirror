@@ -48,6 +48,7 @@ export const userDataErrorRequest: ActionCreator<UserDataRequestErrorAction> = (
 export function userDataRequestAsync(): ThunkAction<void, RootState, unknown, AnyAction> {
     return (dispatch, getState) => {
         dispatch(userDataRequest());
+        if (!getState().token || getState().token === "undefined" || getState().token === '') return;
         axios.get('https://oauth.reddit.com/api/v1/me.json', {
             headers: { Authorization: `bearer ${getState().token}` }
         })
