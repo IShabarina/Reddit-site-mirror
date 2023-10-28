@@ -9,7 +9,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## Here are implemented:
 - functional components;
-- authorization using public API Reddit;
+- authorization using public API Reddit (getting and saving token);
 - React hooks (useEffect, useState, useRef..);
 - Ref and useRef React hook - implementation of a click outside mechanism to hide a modal window;
 - Customs hooks;
